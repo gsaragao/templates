@@ -1,0 +1,10 @@
+<div class="submenu">
+  <h1><%%= t('<%= singular_table_name %>.acao.novo') %></h1>
+  <input type="button" class="button" name="lista" value="<%%= t('<%= singular_table_name %>.acao.listar') %>" 
+onclick="window.location='<%%= <%= plural_table_name %>_path %>'"/>
+</div>
+<div class="body">
+  <div class="content">
+     <%%= render 'form' %>
+  </div>
+</div>

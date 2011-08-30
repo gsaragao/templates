@@ -1,0 +1,46 @@
+    <div class="submenu">
+      <h1><%%= t('menu.<%= plural_table_name %>')%></h1>
+      <input type="button" class="button" name="lista" value="<%%= t('<%= singular_table_name %>.acao.novo') %>" onclick="window.location='<%%= new_<%= singular_table_name %>_path %>'"/>
+	<%%= form_for @<%= singular_table_name %>, :html => { :method => :get }, :url => <%= plural_table_name %>_path do |f| %>
+       <%%= f.super_text_field :descricao, :size => '50', :class => 'inputText', :style => "margin-top: 12px" %>
+	   <input type="submit" class="button" name="btnpesquisa" value="<%%= t('botao.pesquisar') %>" />
+	<%% end %>	
+    </div>
+    <table class="tree">
+      <tr class="head">
+		<% attributes.each do |attribute| -%>
+        <th><%%= t("<%= singular_table_name %>.<%= attribute.name %>") %></th>
+	    <% end -%>
+      </tr>
+    </table>
+    <div class="scroller">
+     <table class="tree">
+      <tbody>
+		<%% if @<%= plural_table_name %>.size > 0  %>
+		  <%% @<%= plural_table_name %>.each do |<%= singular_table_name %>| %>
+		    <tr class="<%%= table_linha_class %>" onclick="mostrar<%= singular_table_name %>(this, '<%%= <%= singular_table_name %>.id %>')">
+		      	<% attributes.each do |attribute| -%>
+		        <td><%%= <%= singular_table_name %>.<%= attribute.name %> %></td>
+			    <% end -%>
+		    </tr>
+		  <%% end %>
+		<%% else %>
+		  <tr class="rowtwo" style="cursor:auto">   
+		    <td colspan="2"><%%= t('msg.sem_registro_cadastrado') %></td>
+		  </tr>	
+		<%% end %>	
+      </tbody>
+     </table>
+    </div> 
+ 	<div class="body">
+	</div>
+	
+<script>
+
+function mostrar<%= singular_table_name %>(row, id) {
+	$('.rowone,.rowtwo').removeClass("selected");
+	$(row).addClass("selected");
+	$(".body").load('/unidades/' + id);	
+}
+
+</script>

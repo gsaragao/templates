@@ -26,7 +26,7 @@ respond_to :html
     @<%= singular_table_name %> = <%= orm_class.build(class_name, "params[:#{singular_table_name}]") %>
     
     if @<%= orm_instance.save %>
-      flash[:notice] = t('create_sucess')
+      flash[:notice] = t('msg.create_sucess')
       redirect_to <%= plural_table_name %>_path
     else
       render :action => :new 
@@ -38,7 +38,7 @@ respond_to :html
     @<%= singular_table_name %> = <%= orm_class.find(class_name, "params[:id]") %>
 
     if @<%= singular_table_name %>.update_attributes(params[:<%= singular_table_name %>])
-      flash[:notice] = t('update_sucess')
+      flash[:notice] = t('msg.update_sucess')
       redirect_to <%= plural_table_name %>_path
     else
       render :action => :edit
@@ -48,7 +48,7 @@ end
   def destroy
     @<%= singular_table_name %> = <%= orm_class.find(class_name, "params[:id]") %>
     @<%= orm_instance.destroy %>
-    flash[:notice] = t('destroy_sucess')
+    flash[:notice] = t('msg.destroy_sucess')
     redirect_to <%= plural_table_name %>_path
   end
 end

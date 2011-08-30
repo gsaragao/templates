@@ -1,0 +1,12 @@
+<%%= form_for @<%= singular_table_name %> , :html => { :class => "form" } do |f| %>
+  <div class="fields">
+    <% attributes.each do |attribute| -%>
+    <%%= f.<%= attribute.field_type %> :<%= attribute.name %> %>
+    <% end -%>
+  </div>
+  <div class="buttons">
+    <%%= f.submit t('botao.submit') %>
+    <input type="button" class="button" name="cancelar" value="Cancelar" 
+	onclick="window.location='<%%= <%= plural_table_name %>_path %>'"/>
+  </div>
+<%% end %>

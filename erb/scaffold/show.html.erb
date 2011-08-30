@@ -1,0 +1,22 @@
+<div class="content">
+  <h1><%%= t('<%= singular_table_name %>.acao.detalhar') %></h1>
+		<br> 
+  <div class="fields with-columns">
+   <% attributes.each do |attribute| -%> 
+    <div class="field">
+      <label><%%= t("<%= singular_table_name %>.attribute.name") %>:</label>
+      <span><%%= @<%= singular_table_name %>.attribute.name if @<%= singular_table_name %>  %></span>
+    </div>
+  <% end -%>
+  </div>
+  <%% if @<%= singular_table_name %>  %>   
+    <div class="fields with-columns"> 	
+ 	  <div class="buttons">
+ 		<input type="button" class="button" name="editar" value="<%%= t('botao.editar') %>"
+		onclick="window.location='<%%= edit_<%= singular_table_name %>_path(@<%= singular_table_name %>.id) %>'"/>
+		<%%= button_to t('botao.excluir'), { :action => "destroy", :id => @<%= singular_table_name %>.id },
+		:confirm => t('msg.confirm_delete', :name => @<%= singular_table_name %>.descricao), :method => :delete , :class => 'button'%>
+	  </div>	
+	</div>
+  <%% end %>
+</div>
