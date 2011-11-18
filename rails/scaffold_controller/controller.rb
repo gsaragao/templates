@@ -8,7 +8,7 @@ class <%= controller_class_name %>Controller < ApplicationController
 
   def index
      @<%= singular_table_name %> = <%= orm_class.build(class_name, "params[:#{singular_table_name}]") %>
-     @<%= plural_table_name %> = <%= controller_class_name %>.pesquisa(@<%= singular_table_name %>.descricao)
+     @<%= plural_table_name %> = <%= singular_table_name.capitalize %>.pesquisa(@<%= singular_table_name %>.descricao)
     respond_with @<%= plural_table_name %>
   end 
 
@@ -57,7 +57,7 @@ class <%= controller_class_name %>Controller < ApplicationController
   end
   
   def carrega_<%= singular_table_name %>
-    @<%= singular_table_name %> = <%= controller_class_name %>.find(params[:id])
+    @<%= singular_table_name %> = <%= singular_table_name.capitalize %>.find(params[:id])
   end
   
 end
