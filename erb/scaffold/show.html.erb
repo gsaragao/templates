@@ -4,8 +4,8 @@
   <div class="fields with-columns">
    <% attributes.each do |attribute| -%> 
     <div class="field">
-      <label><%%= t("<%= singular_table_name %>.attribute.name") %>:</label>
-      <span><%%= @<%= singular_table_name %>.attribute.name if @<%= singular_table_name %>  %></span>
+      <label><%%= t("<%= singular_table_name %>.<%= attribute.name %>") %>:</label>
+      <span><%%= @<%= singular_table_name %>.<%= attribute.name %> if @<%= singular_table_name %>  %></span>
     </div>
   <% end -%>
   </div>
